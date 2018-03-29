@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>VLC Plugin test page</TITLE>
+<style>
+  .inputTrackerInput {
+        height:20;
+        width:30;
+        font-family : Arial, Helvetica, sans-serif;
+        font-size : 12px;
+  }
+</style>
+
+<script type="text/javascript" src="vlcjs/vlc.js"></script>
+<body onLoad="init();" onClose="close();">
+
+<div style="width: 600; height: 200; top:200px; position: absolute; border: 1pt solid black; background: blue; border-radius: 5px; display: none;" id="overlay"></div>
+<table>
+
+<tr><td align="center" colspan="2">
+
+<!--
+Insert VideoLAN.VLCPlugin.2
+-->
+<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+        width="640"
+        height="480"
+        id="vlc"
+        events="True">
+<param name="MRL" value="rtsp://admin:admin@111.75.211.112:555/cam/realmonitor?channel=2&subtype=0" />
+<param name="ShowDisplay" value="True" />
+<param name="AutoLoop" value="False" />
+<param name="AutoPlay" value="True" />
+<param name="Volume" value="50" />
+<param name="toolbar" value="true" />
+<param name="StartTime" value="0" />
+<EMBED pluginspage="http://www.videolan.org"
+       type="application/x-vlc-plugin"
+       version="VideoLAN.VLCPlugin.2"
+       width="640"
+       height="480"
+       toolbar="true"
+       loop="true"
+       branding="true"
+       text="Waiting for video"
+       bgcolor="#000000"
+       allowfullscreen="true"
+       name="vlc">
+</EMBED>
+</object>
+</td>
+<td align="center" colspan="2">
+
+<!--
+Insert VideoLAN.VLCPlugin.2
+-->
+<object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"
+        width="640"
+        height="480"
+        id="vlc2"
+        events="True">
+<param name="MRL" value="rtsp://admin:admin@111.75.211.112:555/cam/realmonitor?channel=1&subtype=0" />
+<param name="ShowDisplay" value="True" />
+<param name="AutoLoop" value="False" />
+<param name="AutoPlay" value="True" />
+<param name="Volume" value="50" />
+<param name="toolbar" value="true" />
+<param name="StartTime" value="0" />
+<EMBED pluginspage="http://www.videolan.org"
+       type="application/x-vlc-plugin"
+       version="VideoLAN.VLCPlugin.2"
+       width="640"
+       height="480"
+       toolbar="true"
+       loop="true"
+       branding="true"
+       text="Waiting for video"
+       bgcolor="#000000"
+       allowfullscreen="true"
+       name="vlc">
+</EMBED>
+</object>
+</td>
+</tr>
+<tr><td colspan="2">
+<table><tr>
+<td valign="top" width="550">
+<!--
+Insert Slider widget
+-->
+<div id="inputTrackerDiv"></div>
+</td><td width="15%">
+<div id="info" style="text-align:center">-:--:--/-:--:--</div>
+<div id="state" style="text-align:center">暂停...</div>
+</td></tr></table>
+</td></tr>
+<tr><td>
+<input type=button id="PlayOrPause" value=" 播放 " onClick='doPlayOrPause();'>
+<input type=button value="停止" onClick='doStop();'>
+<input type=button value="全屏" onClick='getVLC("vlc").video.toggleFullscreen();'>
+<input type=button value="当前vlc版本" onClick='alert("vlc " + getVLC("vlc").VersionInfo);'>
+<input type=button value=" 状态 " onClick='alert("state: " + getVLC("vlc").input.state);'>
+</td><td align="right">
+<SPAN style="text-align:center">音量:</SPAN>
+<input type=button value=" - " onClick='updateVolume(-10)'>
+<SPAN id="volumeTextField" style="text-align:center">--</SPAN>
+<input type=button value=" + " onClick='updateVolume(+10)'>
+<input type=button value="静音" onClick='getVLC("vlc").audio.toggleMute();'>
+</td>
+</tr>
+<tr><td>
+    选择显示比例:
+    <select readonly onChange='doAspectRatio(this.value)'>
+      <option value="default">默认</option>
+      <option value="1:1">1:1</option>
+      <option value="4:3">4:3</option>
+      <option value="16:9">16:9</option>
+      <option value="221:100">221:100</option>
+      <option value="5:4">5:4</option>
+    </select>
+</td>
+</tr>
+</table>
+
+</body>
+</HTML>

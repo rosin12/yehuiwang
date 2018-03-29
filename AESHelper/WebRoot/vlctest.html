@@ -1,0 +1,132 @@
+<!DOCTYPE html>  
+<html>  
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>监控摄像头演示</title>
+	<style type="text/css">
+	*{text-align: center;}
+	</style>
+</head>
+<script type="text/javascript">
+	//var vlc=document.getElementById("vlc");
+	window.onload=function(){
+		 //页面加载判断是哪种浏览器
+	             function getOs() 
+		           { 
+		                 var OsObject = ""; 
+		               if(navigator.userAgent.indexOf("MSIE")>0) { 
+		                   return "MSIE"; 
+		                } 
+	              else if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){ 
+		                    return "Firefox"; 
+		               } 
+		               else if(isMozilla=navigator.userAgent.indexOf("Opera")>0){ 
+	                     return "Opera"; 
+		                } 
+	              else if(isFirefox=navigator.userAgent.indexOf("Chrome")>0){ 
+		                    return "Chrome"; 
+		               } 
+		                else if(isSafari=navigator.userAgent.indexOf("Safari")>0) { 
+		                    return "Safari"; 
+	               }  
+		                else if(isCamino=navigator.userAgent.indexOf("Camino")>0){ 
+		                    return "Camino"; 
+	              } 
+	              else if(isMozilla=navigator.userAgent.indexOf("Gecko/")>0){ 
+	                    return "Gecko"; 
+              }
+	                
+		     } 
+		            //alert("您的浏览器类型为:"+getOs());
+		  var os=getOs();
+		  if(os!="MSIE"){
+			  document.getElementsByTagName('BODY')[0].innerHTML='';
+		      alert("该页面不支持非IE浏览器访问");
+		      
+		   }
+		  function isInsalledIEVLC(){   
+		         
+		       var vlcObj = null;  
+		       var vlcInstalled= false;  
+		         
+		       try {  
+		           vlcObj = new ActiveXObject("VideoLAN.Vlcplugin.2");   
+		           if( vlcObj != null ){   
+		               vlcInstalled = true   
+		           }
+		           else{
+		        	   alert("请安装vlc软件")
+		           }
+		       } catch (e) {  
+		           vlcInstalled= false;  
+		       }          
+		       return vlcInstalled;  
+		   }   
+		
+	}
+</script>
+
+<body>  
+<!--摄像头1-->
+
+<div id="dd" style="float: left; margin-left: 50px ">
+	<b>充电桩1</b>
+	<div style="width: 705px;height: 505px">
+	<object  
+	  classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"   
+	  codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab"  
+	  id="vlc"  
+	  name="vlc"  
+	  class="vlcPlayer"  
+	  events="True"
+	  width="600px"
+	  height="340px"
+	  aspectRatio="4:3"
+	  
+	  >  
+	    <param name="Src" value="rtsp://admin:admin@111.75.211.112:555/cam/realmonitor?channel=1&subtype=0" />  
+	    <param name="ShowDisplay" value="True" />  
+	    <param name="AutoLoop" value="False" />  
+	    <param name="AutoPlay" value="True" />  
+	   <param name="allowfullscreen" value="True">
+	</objetc>  
+	</div>
+</div>
+<!--摄像头2-->
+
+ <div id="s" style="float: left; margin-left: 50px">
+	<b>充电桩2</b>
+	<div style="width: 505px;height: 305px">
+	<object  
+	  classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"   
+	  codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab"  
+	  id="vlc2"  
+	  name="vlc2"  
+	  class="vlcPlayer"  
+	  events="True"
+	  width="600px"
+	  height="340px"
+	  aspectRatio="4:3"
+	  
+	  >  
+	    <param name="Src" value="rtsp://admin:admin@111.75.211.112:555/cam/realmonitor?channel=2&subtype=0" />  
+	    <param name="ShowDisplay" value="True" />  
+	    <param name="AutoLoop" value="False" />  
+	    <param name="AutoPlay" value="True" />  
+	   <param name="allowfullscreen" value="True">
+	</objetc> 
+	</div>
+</div>
+<div style="width: 200px; height: 200px; display: none;">
+<table>
+	<tr>
+		<td><label>如果黑屏请等待加载.....</label></td>
+	</tr>
+	<tr>
+		<td>如果无法加载播放器请点击<a href="http://www.videolan.org/vlc/releases/2.2.0.html#download" target="_Blank">此处下载软件插件</a>后重新打开该页面</td>
+	</tr>
+
+</table>
+</div>
+</body>  
+</html>

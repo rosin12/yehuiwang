@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<form method="post" onsubmit="md5();" role="form" action="http://m2mled.net/login" id="form1">
+	<input type="hidden" name="account" value="latticeshow" required="true" placeholder="账号">
+	<input type="hidden" id="password" value="jinghe123456" name="password" required="true" type="password" placeholder="密码">
+	<a href="javascript:;" onclick="document.getElementById('form1').submit()">测试</a>
+</form>
+<script src="login/md5.min.js"></script>
+<script>
+/* function send(){
+	document.getElementById("form1").submit()
+} */
+function md5() {
+  var pwd = document.getElementById("password");
+  pwd.value = hex_md5(hex_md5(pwd.value).toUpperCase()).toUpperCase();
+}
+</script>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src='login/spon_base64.js'></script>
+<script type="text/javascript">
+function Linkto()
+{
+	// 1. 传入参数为： {"username":"test","password":"123456","isadmin":"1","display":"路人甲"}
+	var username = "admin";
+	var password = "admin";
+	var display = "超级管理员";
+	var isadmin = "1";         // 1为管理员， 0为普通用户
+	var context = "{'username':'" + username + "','password':'" + password + "','display':'" + display + "','isadmin':'" + isadmin + "'}";
+	
+	// 2. 参数加密
+	var b = new SPON_Base64();
+	var encoderData = b.encode(context);
+	
+	// 3. 链接方式为： http://192.168.1.100/?spon_token=
+	//self.location = 'http://192.168.1.100/?spon_token=' + encoderData;
+	//document.getElementById("iftest").src = 'http://192.168.1.100/?spon_token=' + encoderData;
+	document.getElementById("iftest").src = 'http://192.168.6.17:81/?spon_token=' + encoderData;
+}
+</script>
+</head>
+<body>
+<input type='button' value='Demo' id="btnDemo" onclick="Linkto();">
+<iframe id="iftest" src=""  width="100%" height="600px" style="border: 0px;">  
+</iframe>  
+</body>
+</html>
